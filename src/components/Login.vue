@@ -96,6 +96,7 @@ const submitForm = async() => {
 
   const stamp = Math.floor(Date.now() / 1000)
   const token = await genJWTToken(secret.value, user.value, uid.value, stamp)
+  console.log('Token:', token);
   const res = await authApi(operator.value, user.value, uid.value, secret.value, token.split('.')[0], stamp)
   json.value = JSON.stringify(res, null, 2)
   if (res.code === 200) {

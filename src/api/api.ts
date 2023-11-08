@@ -1,5 +1,5 @@
 import { baseUrl } from './config'
-import { genJWTToken, genSign, md5 } from './utils'
+import { genSign, md5 } from './utils'
 // import { URLSearchParams } from 'url'
 
 export enum ResponseCode {

@@ -25,7 +25,7 @@ const per = 10
 const gap = '==============================================================='
 
 async function main() {
-  const authRes = await Api.authApi(operator, user, uid, secret)
+  const authRes = await Api.authApi(operator, user, uid, secret, '', Date.now())
   console.log('auth', authRes.data)
   console.log(gap)
 

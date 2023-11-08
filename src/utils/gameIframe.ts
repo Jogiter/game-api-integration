@@ -65,17 +65,17 @@ export type IGameNames = keyof typeof gameId
 export type GameIframe = typeof gamePathMap & GameIframeParams
 
 // https://xxx.yygamesentrance.com/mines?lang=en&currency=GOLD&deviceType=android&userName=91&token=edJnZYAmRdCbCBrIxk7vxMn40XPz3wlo&Mines=xQMgmQpgl5&Dice=PWnByQNBLA&Mini+Roulette=zAmB45edv1&Keno=x6VdazYrPp&Hilo=3Nqr10Adoj&Goal=2Opr7YWBDQ&Plinko=w40BvQ7gYe&Hotline=7JbrE8kdy9&Aviator=WOng6JNgKZ&name=mines&isDemo=1&sessionToken=OtElX0rqjpwfgUTNhYa83G3NmbNrthIJRybSJ4vD0py6q5y4uwJQES91lnQTXEyb&gToken=edJnZYAmRdCbCBrIxk7vxMn40XPz3wlo
-export function getGameIframe({ lang, currency, deviceType, userName, token, name, isDemo, sessionToken, gToken }: GameIframeParams) {
+export function getGameIframe({ lang, currency, deviceType, userName, token, name, isDemo = '0', sessionToken, gToken = '' }: GameIframeParams) {
   const params = new URLSearchParams({
     lang,
     currency,
     deviceType,
     userName,
     token,
-    // isDemo,
+    isDemo,
     sessionToken,
     name,
-    // gToken,
+    gToken,
     // ...gamePathMap,
     ...gameId,
   })

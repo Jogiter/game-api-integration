@@ -1,6 +1,6 @@
 // this works only for nodejs
 // import jwt from 'jsonwebtoken';
-import * as jose from 'jose';
+import { SignJWT } from 'jose';
 // import crypto from 'crypto';
 import MD5 from 'crypto-js/md5'
 
@@ -20,13 +20,13 @@ async function genJWTToken(
   // console.log(claims);
 
   // const token = jwt.sign(claims, accessSecret, { algorithm: 'HS256' });
-  const token = await new jose.SignJWT(claims)
-  .setProtectedHeader({ alg: 'HS256' })
-  .setIssuedAt()
-  .setIssuer('urn:example:issuer')
-  .setAudience('urn:example:audience')
-  .setExpirationTime('2h')
-  .sign(new TextEncoder().encode(accessSecret));
+  // return JWT.sign(claims, secretKey, { algorithm: 'HS256' });
+
+  // ! ReferenceError: CryptoKey is not defined [#411](https://github.com/panva/jose/discussions/411)
+  // Find [this article](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKey) describes that CryptoKey only works in HTTPS. Adding SSL certificate just solved the issue.
+  const token = await new SignJWT(claims)
+    .setProtectedHeader({ alg: 'HS256' })
+    .sign(new TextEncoder().encode(accessSecret));
   /**
    * !token 不能超过 128 的长度
    */
