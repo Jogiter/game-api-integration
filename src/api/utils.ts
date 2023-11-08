@@ -23,7 +23,7 @@ async function genJWTToken(
   // return JWT.sign(claims, secretKey, { algorithm: 'HS256' });
 
   // ! ReferenceError: CryptoKey is not defined [#411](https://github.com/panva/jose/discussions/411)
-  // Find [this article](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKey) describes that CryptoKey only works in HTTPS. Adding SSL certificate just solved the issue.
+  // Find [this article](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKey) describes that CryptoKey only works in HTTPS. Adding SSL certificate just solved the issu
   const token = await new SignJWT(claims)
     .setProtectedHeader({ alg: 'HS256' })
     .sign(new TextEncoder().encode(accessSecret));
