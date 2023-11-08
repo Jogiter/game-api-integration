@@ -1,5 +1,5 @@
 // const base = 'https://games.yygamesentrance.com'
-const base = 'http://192.168.50.143:5174'
+import { iframeBase } from '../api/config'
 
 /**
  * 小飞机：/aviator
@@ -79,6 +79,6 @@ export function getGameIframe({ lang, currency, deviceType, userName, token, nam
     // ...gamePathMap,
     ...gameId,
   })
-  const url = `${base}${gamePathMap[name]}?${params.toString()}`
+  const url = `${iframeBase}${gamePathMap[name]}?${params.toString()}`
   return url
 }
